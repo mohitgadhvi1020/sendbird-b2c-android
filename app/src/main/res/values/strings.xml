@@ -1,0 +1,23 @@
+<resources>
+    <string name="loading">Loading</string>
+    <string name="app_name">Sen Chat</string>
+    <string name="skip">Skip</string>
+    <string name="sign_up_or_login_to_unlock_exclusive_features">Sign up or login to unlock exclusive features</string>
+    <string name="email">Email</string>
+    <string name="continues">Continue</string>
+    <string name="search">Search</string>
+    <string name="saved">Saved</string>
+    <string name="chat">Chat</string>
+    <string name="projects">Projects</string>
+    <string name="account">Account</string>
+    <string name="err_session_expired">Session Expired</string>
+    <string name="city_area_or_building">City, area or building</string>
+    <string name="featured">Featured</string>
+    <string name="verified">VERIFIED</string>
+    <string name="superagent">SUPERAGENT</string>
+    <string name="password">Password</string>
+    <string name="no_internet_connection">No internet connection</string>
+    <string name="some_went_wrong">Something went wrong</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

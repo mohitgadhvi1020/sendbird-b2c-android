@@ -1,0 +1,24 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/search"
+        android:icon="@drawable/ic_search"
+        android:title="@string/search" />
+    <item
+        android:id="@+id/saved"
+        android:icon="@drawable/ic_heart"
+        android:title="@string/saved" />
+    <item
+        android:id="@+id/chat"
+        android:icon="@drawable/ic_chat"
+        android:title="@string/chat" />
+
+    <item
+        android:id="@+id/projects"
+        android:icon="@drawable/ic_projects"
+        android:title="@string/projects" />
+
+    <item
+        android:id="@+id/account"
+        android:icon="@drawable/ic_user"
+        android:title="@string/account" />
+</menu>

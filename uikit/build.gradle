@@ -1,0 +1,143 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlinx-serialization'
+    id 'kotlin-parcelize'
+    id 'org.jetbrains.dokka' version "$kotlin_version"
+}
+
+
+version = UIKIT_VERSION
+android {
+    namespace 'com.sendbird.uikit.test'
+    compileSdk 34
+
+    version = UIKIT_VERSION
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 34
+        versionCode Integer.parseInt(UIKIT_VERSION_CODE)
+        versionName UIKIT_VERSION
+
+        buildConfigField "String", "VERSION_NAME", "\"$UIKIT_VERSION\""
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            consumerProguardFile 'consumer-rules.pro'
+            versionNameSuffix UIKIT_VERSION
+
+            libraryVariants.all { variant ->
+                variant.outputs.all {
+                    def aarName = "sendbird-uikit-${project.version}.aar"
+
+                    println "\n============================================================"
+                    println "project module : Sendbird UIKit"
+                    println "project version : $project.version"
+                    println "build type : ${variant.buildType.name}"
+                    println "output name : $aarName"
+                    println "============================================================\n"
+                    outputFileName = aarName
+                }
+            }
+        }
+    }
+
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+        buildConfig = true
+    }
+
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+    }
+}
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Sendbird
+    api 'com.sendbird.sdk:sendbird-chat:4.24.1'
+    implementation "com.sendbird.sdk:message-template:1.0.0"
+
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.16.0'
+
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.recyclerview:recyclerview:1.3.2'
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
+    implementation "androidx.viewpager2:viewpager2:1.1.0"
+    implementation 'com.google.android.material:material:1.5.0'
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2"
+}
+
+dokkaHtml {
+    print "uikit doc path=$System.env.UIKIT_DOC_PATH"
+    outputDirectory.set(file("$System.env.UIKIT_DOC_PATH"))
+    // Set module name displayed in the final output
+    moduleName.set("SendbirdUIKit")
+    suppressInheritedMembers.set(true)
+
+    String dokkaBaseConfiguration = """
+    {
+      "footerMessage": "<a href=\\"https://dashboard.sendbird.com/settings/contact_us\\">Report a bug or request a feature.</a>\\tFor further developer documentation, see <a href=\\"https://sendbird.com/docs/chat/uikit/v3/android-view/overview\\">UIkit SDK Documentation</a>. That documentation contains more detailed descriptions, conceptual overviews, definitions of terms, and code examples.<br/> Copyright &copy; 2022, Sendbird or its affiliates. All rights reserved."
+    }
+    """
+    pluginsMapConfiguration.set(
+        // fully qualified plugin name to json configuration
+        ["org.jetbrains.dokka.base.DokkaBase": dokkaBaseConfiguration]
+    )
+
+    dokkaSourceSets {
+        configureEach {
+            // The set of visibility modifiers that should be documented.
+            documentedVisibilities.set(
+                [
+                    org.jetbrains.dokka.DokkaConfiguration.Visibility.PUBLIC, // Same for both Kotlin and Java
+                    org.jetbrains.dokka.DokkaConfiguration.Visibility.PROTECTED, // Same for both Kotlin and Java
+                ]
+            )
+
+            // Do not output deprecated members. Applies globally, can be overridden by packageOptions
+            skipDeprecated.set(false)
+
+            // Emit warnings about not documented members. Applies globally, also can be overridden by packageOptions
+            reportUndocumented.set(false)
+
+            // Do not create index pages for empty packages
+            skipEmptyPackages.set(true)
+
+            // Disable linking to online Android documentation (only applicable for Android projects)
+            noAndroidSdkLink.set(false)
+
+            // Used for linking to JDK documentation
+            jdkVersion.set(8)
+
+            suppressGeneratedFiles.set(false)
+
+            // Suppress a package
+            perPackageOption {
+                matchingRegex.set(".*\\.internal.*")
+                suppress.set(true)
+            }
+        }
+    }
+}

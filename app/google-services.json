@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "539144808343",
+    "project_id": "property-backend-12169",
+    "storage_bucket": "property-backend-12169.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:539144808343:android:df49745b2e2f0f6feb46d2",
+        "android_client_info": {
+          "package_name": "in.sendbirdpoc"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDl6dDbzF10CWoeopTLOfHwF_dWoa8D0I4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

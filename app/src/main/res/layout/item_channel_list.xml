@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="@dimen/_5sdp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clDetailsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/_8sdp"
+        android:paddingVertical="@dimen/_5sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardImage"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            app:cardCornerRadius="@dimen/_8sdp"
+            app:cardElevation="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/ivChannel"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:scaleType="fitXY"
+                android:src="@drawable/channel_image" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clChannelName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            app:layout_constraintEnd_toStartOf="@+id/tvUnreadCount"
+            app:layout_constraintStart_toEndOf="@id/cardImage"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tvChannelName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxWidth="@dimen/_160sdp"
+                android:maxLines="2"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/llImageStack"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Channel Name" />
+
+            <LinearLayout
+                android:id="@+id/llImageStack"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toEndOf="@+id/tvChannelName"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/ivImage1"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/ic_add_member"
+                    android:visibility="gone"
+                    app:shapeAppearanceOverlay="@style/RoundedCornerImage" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/ivImage2"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="-10dp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/ic_add_member"
+                    android:visibility="gone"
+                    app:shapeAppearanceOverlay="@style/RoundedCornerImage" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/ivImage3"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="-10dp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/ic_add_member"
+                    android:visibility="gone"
+                    app:shapeAppearanceOverlay="@style/RoundedCornerImage" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/ivImage4"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="-10dp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/ic_add_member"
+                    android:visibility="gone"
+                    app:shapeAppearanceOverlay="@style/RoundedCornerImage" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/ivImage5"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="-10dp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/ic_add_member"
+                    android:visibility="gone"
+                    app:shapeAppearanceOverlay="@style/RoundedCornerImage" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tvChannelDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/lightGray"
+            android:textSize="@dimen/_10ssp"
+            app:layout_constraintEnd_toEndOf="@+id/clChannelName"
+            app:layout_constraintStart_toStartOf="@+id/clChannelName"
+            app:layout_constraintTop_toBottomOf="@+id/clChannelName"
+            tools:text="Channel Name" />
+
+        <TextView
+            android:id="@+id/tvLastMessage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/lightGray"
+            android:textSize="@dimen/_10ssp"
+            app:layout_constraintEnd_toEndOf="@+id/clChannelName"
+            app:layout_constraintStart_toStartOf="@+id/clChannelName"
+            app:layout_constraintTop_toBottomOf="@+id/tvChannelDescription"
+            tools:text="Channel Name" />
+
+        <TextView
+            android:id="@+id/tvUnreadCount"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:background="@drawable/bg_unread_count"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="10" />
+
+        <ImageView
+            android:id="@+id/ivStar"
+            android:layout_width="@dimen/_15sdp"
+            android:layout_height="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_2sdp"
+            android:src="@drawable/ic_star_fill"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvUnreadCount" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:layout_marginVertical="@dimen/_8sdp"
+        android:background="#E3E3E3"
+        app:layout_constraintTop_toBottomOf="@+id/clDetailsContainer" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
